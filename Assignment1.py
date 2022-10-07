@@ -9,8 +9,9 @@ Created on Thu Oct  6 13:41:15 2022
 # import pysox as psx
 import numpy as np
 import scipy.io.wavfile as spwav
-import scipy.fft as spfft
+from scipy.fft import fft,rfft,rfftfreq, fftfreq
 import pylab as pl
+import math
 
 #import wav file and read in the data
 audio = "audio.wav"
@@ -25,11 +26,15 @@ norm_datay = datay/np.max(datay)
 time = np.arange(0, duration, (1/sample_rate))
 
 #fft stuff
-f_domain = spfft.fft(time)
-dataydb = 20*np.log10(abs(norm_datay))
+N = math.ceil(sample_rate *duration)
+yf = fft(norm_datay)
+xf = fftfreq(N,1/sample_rate)
+yf = np.fft.fftshift(yf)
+xf = np.fft.fftshift(xf)
+
 
 #plotting
-pl.plot(f_domain,dataydb)
+pl.plot(xf,np.abs(yf))
 pl.ylabel('Normalised Amplitude')
 pl.xlabel('Time [s]')
 pl.title('Original Voice Recording Plot')
