@@ -1,1 +1,52 @@
+%initialise packages
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[english]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+
+\parindent 0pt
+\parskip 4pt
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+%define colours used
+\definecolor{yellow1}{RGB}{255, 207, 56}
+\definecolor{lightblue}{RGB}{19, 154, 215}
+\definecolor{glasgowblue}{RGB}{0, 53, 95}
+
+%titlepage info
+\title{Digital Signal Processing Assignment 1 - Fast Fourier Transform}
+\author{Ninett Andréli (2425701A), Eve Mulholland (2446058M)}
+\date{October 2022}
+
+% Definition of \maketitle
+\makeatletter         
+\def\@maketitle{
+\
+\begin{center}
+\includegraphics[scale=0.7]{UoG_colour}\\
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+{\Huge \sffamily \@title }\\[4ex] 
+{\Large \color{glasgowblue}  \@author}\\[4ex] 
+{\Large \color{lightblue} \@date}\\[8ex]
+\end{center}}
+\makeatother
+
+%Document contents
+\begin{document}
+\maketitle
+\noindent
+{\color{yellow1} \rule{\linewidth}{2mm} }
+\newpage
+\section{Table of Contents}
+\newpage
+\section{Introduction}
+
+\end{document}
 
