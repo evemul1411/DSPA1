@@ -21,20 +21,17 @@ sample_rate, data = spwav.read(audio)
 duration = len(data)/sample_rate
 
 #normalise x,y axis
-datax, datay = np.split(data,2,axis=1)
-norm_datay = datay/np.max(datay)
-time = np.arange(0, duration, (1/sample_rate))
+# datax, datay = np.split(data,2,axis=1)
+# norm_datay = datay/np.max(datay)
+# time = np.arange(0, duration, (1/sample_rate))
 
 #fft stuff
-N = math.ceil(sample_rate *duration)
-yf = fft(norm_datay)
-xf = fftfreq(N,1/sample_rate)
-yf = np.fft.fftshift(yf)
-xf = np.fft.fftshift(xf)
+trns = fft(data)
+xf = rfftfreq((trns.size-1), 1/sample_rate)
 
 
 #plotting
-pl.plot(xf,np.abs(yf))
+pl.plot(xf,np.abs(trns)/np.linalg.norm(trns))
 pl.ylabel('Normalised Amplitude')
 pl.xlabel('Time [s]')
 pl.title('Original Voice Recording Plot')
